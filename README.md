@@ -59,32 +59,6 @@ In this exercise, you will:
 > The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
 
 
-flowchart TD
-    subgraph BronzeLakehouse
-        A1["dbo_Debt"]
-        A2["dbo_CompletedActivitiesView"]
-    end
-
-   subgraph DataFrames
-        B1["debt_crg_df"]
-        B2["completed_activities_df"]
-    end
-
-   subgraph SilverLakehouse
-        C1["covenant_debt_link"]
-        C2["covenant_activities"]
-    end
-
-   %% dbo_Debt fields
-    A1 -- "CrgId,\nChathamReferenceNumber,\nExternalId,\nEntityExternalKey" --> B1
-
-   %% dbo_CompletedActivitiesView fields
-    A2 -- "Id,\nCompletedDate,\nDebtInstrumentName,\nDebtInstrumentId,\nDebtInstrumentStatus,\nActivityName,\nAttestationDate,\nWatchListStatus,\nWatchListNote" --> B2
-
-   %% DataFrames to SilverLakehouse tables
-    B1 -- "write.format('delta')\n.saveAsTable()" --> C1
-    B2 -- "write.format('delta')\n.saveAsTable()" --> C2
-
 ---
 
 &copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
